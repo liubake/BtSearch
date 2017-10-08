@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Class-Path: jopt-simple-5.0.2.jar snakeyaml-1.15.jar mongo-java-driver
+ -3.5.0.jar jackson-core-2.8.5.jar spring-beans-4.3.4.RELEASE.jar spri
+ ng-aop-4.3.4.RELEASE.jar httpcore-4.4.5.jar httpasyncclient-4.1.2.jar
+  jackson-dataformat-smile-2.8.6.jar spring-expression-4.3.4.RELEASE.j
+ ar jackson-dataformat-yaml-2.8.6.jar spring-data-commons-1.13.7.RELEA
+ SE.jar commons-pool2-2.4.2.jar netty-all-4.1.11.Final.jar jackson-dat
+ abind-2.8.5.jar hppc-0.7.1.jar log4j-1.2.17.jar spring-core-4.3.4.REL
+ EASE.jar httpcore-nio-4.4.5.jar commons-codec-1.10.jar t-digest-3.0.j
+ ar spring-context-4.3.4.RELEASE.jar jedis-2.9.0.jar slf4j-api-1.7.25.
+ jar bee-encode-0.2.jar spring-data-mongodb-1.10.7.RELEASE.jar jstl-1.
+ 2.jar httpclient-4.5.2.jar spring-tx-4.3.11.RELEASE.jar jsp-api-2.2.j
+ ar jcl-over-slf4j-1.7.25.jar log4j-api-2.9.1.jar jackson-annotations-
+ 2.8.0.jar servlet-api-2.5.jar jackson-dataformat-cbor-2.8.6.jar commo
+ ns-logging-1.2.jar joda-time-2.9.5.jar
+Main-Class: Spider
+

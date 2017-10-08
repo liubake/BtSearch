@@ -8,17 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="65b030e4-bfc5-494a-87c5-307cb1fb02b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Dao/BtSearch.Dao.iml" afterPath="$PROJECT_DIR$/BtSearch.Dao/BtSearch.Dao.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Model/BtSearch.Model.iml" afterPath="$PROJECT_DIR$/BtSearch.Model/BtSearch.Model.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Service/BtSearch.Service.iml" afterPath="$PROJECT_DIR$/BtSearch.Service/BtSearch.Service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Spider/BtSearch.Spider.iml" afterPath="$PROJECT_DIR$/BtSearch.Spider/BtSearch.Spider.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/handler/PeerDownloadHandler.java" afterPath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/handler/PeerDownloadHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Util/BtSearch.Util.iml" afterPath="$PROJECT_DIR$/BtSearch.Util/BtSearch.Util.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Web/BtSearch.Web.iml" afterPath="$PROJECT_DIR$/BtSearch.Web/BtSearch.Web.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.iml" afterPath="$PROJECT_DIR$/BtSearch.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpiderConfig/appcontext.xml" afterPath="$PROJECT_DIR$/SpiderConfig/appcontext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" afterPath="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="BtSearch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1100,12 +1089,12 @@
       <option name="number" value="Default" />
       <updated>1507476590277</updated>
       <workItem from="1507476594145" duration="108000" />
-      <workItem from="1507476739580" duration="5708000" />
+      <workItem from="1507476739580" duration="6078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5816000" />
+    <option name="totallyTimeSpent" value="6186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -1287,6 +1276,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SpiderConfig/appcontext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5053599">
@@ -1349,7 +1346,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>BtSearch.Spider</last-edited>
+          <last-edited>BtSearch.Util</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

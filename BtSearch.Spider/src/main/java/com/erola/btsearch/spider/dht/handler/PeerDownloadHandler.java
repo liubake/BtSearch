@@ -5,7 +5,6 @@ import com.erola.btsearch.spider.dht.model.DownloadPeer;
 import com.erola.btsearch.spider.dht.util.ByteUtil;
 import com.erola.btsearch.util.log4j.Log4jHelper;
 import com.erola.btsearch.util.redis.RedisHelper;
-
 import java.net.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

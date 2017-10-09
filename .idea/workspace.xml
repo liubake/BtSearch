@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65b030e4-bfc5-494a-87c5-307cb1fb02b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerDownloadHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerWireProtocalHandler.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/handler/PeerDownloadHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/handler/PeerWireProtocalHandler.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/DHTServer.java" afterPath="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/DHTServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" afterPath="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpiderConfig/mongoconfig.properties" afterPath="$PROJECT_DIR$/SpiderConfig/mongoconfig.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpiderConfig/spiderconfig.properties" afterPath="$PROJECT_DIR$/SpiderConfig/spiderconfig.properties" />
     </list>
     <ignored path="BtSearch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,24 +37,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.888889">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.2658789">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PeerDownloadHandler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerDownloadHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38352272">
-              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -95,11 +75,11 @@
         <option value="$PROJECT_DIR$/SpiderConfig/appcontext.xml" />
         <option value="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerWireProtocalHandler.java" />
         <option value="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/DHTServer.java" />
-        <option value="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/SpiderConfig/mongoconfig.properties" />
         <option value="$PROJECT_DIR$/SpiderConfig/spiderconfig.properties" />
         <option value="$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerDownloadHandler.java" />
+        <option value="$PROJECT_DIR$/SpiderConfig/log4jconfig.properties" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -653,12 +633,12 @@
       <updated>1507476590277</updated>
       <workItem from="1507476594145" duration="108000" />
       <workItem from="1507476739580" duration="7297000" />
-      <workItem from="1507556217254" duration="1230000" />
+      <workItem from="1507556217254" duration="3923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8635000" />
+    <option name="totallyTimeSpent" value="11328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -861,14 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SpiderConfig/log4jconfig.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/DHTServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.222222">
@@ -925,21 +897,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.888889">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BtSearch.Spider/src/main/java/com/erola/btsearch/spider/dht/server/PeerDownloadHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38352272">
+        <state vertical-scroll-proportion="-0.2556818">
           <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SpiderConfig/log4jconfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42613637">
+          <caret line="20" column="104" selection-start-line="20" selection-start-column="104" selection-end-line="20" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2658789">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -4,8 +4,7 @@
 
 模块介绍：
 
-BtSearch.Util   辅助的工具类
-
+BtSearch.Util   辅助的工具类<br/>
 BtSearch.Model   数据模型层
 
 BtSearch.Dao   数据访问层

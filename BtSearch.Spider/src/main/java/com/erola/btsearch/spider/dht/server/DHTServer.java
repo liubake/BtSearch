@@ -1,7 +1,6 @@
 package com.erola.btsearch.spider.dht.server;
 
 import com.erola.btsearch.spider.config.SpiderConfig;
-import com.erola.btsearch.spider.dht.handler.PeerDownloadHandler;
 import com.erola.btsearch.spider.dht.listener.OnTorrentDownloadListener;
 import com.erola.btsearch.spider.dht.model.DownloadPeer;
 import com.erola.btsearch.spider.dht.model.Node;
@@ -16,7 +15,6 @@ import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import org.ardverk.coding.BencodingInputStream;
 import org.ardverk.coding.BencodingOutputStream;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
@@ -294,11 +292,11 @@ public class DHTServer implements Runnable {
                     InetAddress inetAddress = InetAddress.getByAddress(new byte[]{nodes[i + 20], nodes[i + 21], nodes[i + 22], nodes[i + 23]});
                     InetSocketAddress nodeAddress = new InetSocketAddress(inetAddress, (0x0000FF00 & (nodes[i + 24] << 8)) | (0x000000FF & nodes[i + 25]));
                     if (!nodeAddress.getHostString().equals(this.hostName)) {
-                        byte[] nodeId = new byte[20];
-                        System.arraycopy(nodes, i, nodeId, 0, 20);
-                        nodeQueue.offer(new Node(nodeAddress.getHostString(), nodeAddress.getPort(), nodeId));
+                        byte[] tempNodeId = new byte[20];
+                        System.arraycopy(nodes, i, tempNodeId, 0, 20);
+                        nodeQueue.offer(new Node(nodeAddress.getHostString(), nodeAddress.getPort(), tempNodeId));
+                        Log4jHelper.logDebug(this.getClass(), "FindNode:"+ ByteUtil.byteArrayToHex(tempNodeId));
                     }
-                    Log4jHelper.logDebug(this.getClass(), "FindNode:"+ ByteUtil.byteArrayToHex(nodeId));
                 }
                 catch (UnknownHostException e) {
                 }

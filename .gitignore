@@ -1,0 +1,12 @@
+.idea/
+
+#log
+logs/
+
+# Compile directories
+BtSearch.Util/target/
+BtSearch.Model/target/
+BtSearch.Dao/target/
+BtSearch.Service/target/
+BtSearch.Spider/target/
+BtSearch.Web/target/

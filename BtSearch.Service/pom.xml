@@ -11,5 +11,22 @@
 
     <artifactId>BtSearch.Service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <artifactId>BtSearch.Util</artifactId>
+            <groupId>com.erola</groupId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>BtSearch.Model</artifactId>
+            <groupId>com.erola</groupId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>BtSearch.Dao</artifactId>
+            <groupId>com.erola</groupId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

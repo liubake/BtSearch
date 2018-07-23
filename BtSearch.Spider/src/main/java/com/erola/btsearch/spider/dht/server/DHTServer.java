@@ -49,6 +49,7 @@ public class DHTServer implements Runnable {
     private OnTorrentDownloadListener onTorrentDownloadListener;
 
     public DHTServer(OnTorrentDownloadListener onTorrentDownloadListener) {
+        //System.setProperty("io.netty.noUnsafe","true");
         this.onTorrentDownloadListener = onTorrentDownloadListener;
         port = SpiderConfig.getPort();
         hostName = SpiderConfig.getHostName();

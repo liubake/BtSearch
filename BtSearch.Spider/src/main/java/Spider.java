@@ -8,6 +8,7 @@ import com.erola.btsearch.util.redis.RedisConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import java.io.File;
+import java.net.URLDecoder;
 
 /**
  * Created by Erola on 2017/9/8.
@@ -20,28 +21,31 @@ public class Spider {
      */
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws Exception {
+        File currentFile = new File(Spider.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        String rootDirectory = URLDecoder.decode(currentFile.getParentFile().getCanonicalPath(), "utf-8");
+
         /**
          * 初始化 Log4j 配置
          */
-        String log4jConfig = System.getProperty("user.dir") + File.separator + "SpiderConfig" + File.separator + "log4jconfig.properties";
+        String log4jConfig = rootDirectory + File.separator + "log4jconfig.properties";
         Log4jConfig.initializeLog4jConfig(log4jConfig);
 
         /**
          * 初始化 Redis 配置
          */
-        String redisConfig = System.getProperty("user.dir") + File.separator + "SpiderConfig" + File.separator + "redisconfig.properties";
+        String redisConfig = rootDirectory + File.separator + "redisconfig.properties";
         RedisConfig.initializeRedisConfig(redisConfig);
 
         /**
          * 初始化 Mongo 配置
          */
-        String mongoConfig = System.getProperty("user.dir") + File.separator + "SpiderConfig" + File.separator + "mongoconfig.properties";
+        String mongoConfig = rootDirectory + File.separator + "mongoconfig.properties";
         MongoDBConfig.initializeRedisConfig(mongoConfig);
 
         /**
          * 初始化爬虫配置
          */
-        String spiderConfig = System.getProperty("user.dir") + File.separator + "SpiderConfig" + File.separator + "spiderconfig.properties";
+        String spiderConfig = rootDirectory + File.separator + "spiderconfig.properties";
         SpiderConfig.initializeSpiderConfig(spiderConfig);
 
 
@@ -52,7 +56,7 @@ public class Spider {
         Log4jHelper.logError(Spider.class, "error", new NullPointerException("error test111"));*/
 
 
-        String contextConfig = File.separator + System.getProperty("user.dir") + File.separator + "SpiderConfig" + File.separator + "appcontext.xml";
+        String contextConfig = rootDirectory + File.separator + "appcontext.xml";
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextConfig);
         ITorrentInfoService torrentInfoService = applicationContext.getBean("TorrentInfoService", ITorrentInfoService.class);
         Thread dhtThread = new Thread(new DHTServer((TorrentInfo torrentInfo)->torrentInfoService.saveOrUpdate(torrentInfo)));

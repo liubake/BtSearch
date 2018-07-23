@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="BtSearch.Web:war">
-    <output-path>$PROJECT_DIR$/BtSearch.Web/target</output-path>
-    <root id="archive" name="BtSearch.Web.war">
-      <element id="artifact" artifact-name="BtSearch.Web:war exploded" />
-    </root>
-  </artifact>
-</component>

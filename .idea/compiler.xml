@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BtSearch.Dao" />
+        <module name="BtSearch.Model" />
+        <module name="BtSearch.Service" />
+        <module name="BtSearch.Spider" />
+        <module name="BtSearch.Util" />
+        <module name="BtSearch.Web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BtSearch" target="1.5" />
+      <module name="BtSearch.Dao" target="1.8" />
+      <module name="BtSearch.Model" target="1.8" />
+      <module name="BtSearch.Service" target="1.8" />
+      <module name="BtSearch.Spider" target="1.8" />
+      <module name="BtSearch.Util" target="1.8" />
+      <module name="BtSearch.Web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

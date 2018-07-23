@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.iml" filepath="$PROJECT_DIR$/BtSearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Dao/BtSearch.Dao.iml" filepath="$PROJECT_DIR$/BtSearch.Dao/BtSearch.Dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Model/BtSearch.Model.iml" filepath="$PROJECT_DIR$/BtSearch.Model/BtSearch.Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Service/BtSearch.Service.iml" filepath="$PROJECT_DIR$/BtSearch.Service/BtSearch.Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Spider/BtSearch.Spider.iml" filepath="$PROJECT_DIR$/BtSearch.Spider/BtSearch.Spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Util/BtSearch.Util.iml" filepath="$PROJECT_DIR$/BtSearch.Util/BtSearch.Util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BtSearch.Web/BtSearch.Web.iml" filepath="$PROJECT_DIR$/BtSearch.Web/BtSearch.Web.iml" />
+    </modules>
+  </component>
+</project>

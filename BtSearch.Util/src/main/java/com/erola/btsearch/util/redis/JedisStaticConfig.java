@@ -1,24 +1,35 @@
-/*
-                                             __----~~~~~~~~~~~------___
-                                  .  .   ~~//====......          __--~ ~~
-                  -.            \_|//     |||\\  ~~~~~~::::... /~
-               ___-==_       _-~o~  \/    |||  \\            _/~~-
-       __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~
-   _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /
- .~       .~       |   \\ -_    /  /-   /   ||      \   /
-/  ____  /         |     \\ ~-_/  /|- _/   .||       \ /
-|~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\
-         '         ~-|      /|    |-~\~~       __--~~
-                     |-~~-_/ |    |   ~\_   _-~            /\
-                          /  \     \__   \/~                \__
-                      _--~ _/ | .-~~____--~-/                  ~~==.
-                     ((->/~   '.|||' -_|    ~~-/ ,              . _||
-                                -_     ~\      ~~---l__i__i__i--~~_/
-                                _-~-__   ~)  \--______________--~~
-                              //.-~~~-~_--~- |-------~~~~~~~~
-                                     //.-~~~--\
+/**
+                                                                                    +
+                Atom                                                                @@
+                                                                                  `@@@@@
+                                                                       +@'  .:+@@@;@@@@@@
+                                                                    @@@@@@@@@@+:      `#@@:
+                                                               ,'@@@@@@@@@,`.`;``.; ```` @@@@
+                                                           @#@@@@@@@@@@@``.`````;:@+,`````': ``
+                                                             :@@@@@@@@ ``````` :,@@@ ;`` ````` ,
+                                                                @@@@@@@ .````. .@@@..`. `````: `
+                                                               ;````` `.`````.    '``````` ,,@.`
+                                                              .`..`, `..`````````````````.@@@;`;
+                        ,;:,..,:.::::::;::,`                   , .......``````````````.`:,@@,`:
+                @`````````````````````````````````` ``     `.,;,,;..:,..```````,````,``'.::`'
+                  :,;@ ````````````````````````````````````````````....`.`````````````````.+
+                   `:;,`````````````````````````````````````````````....`,:`````````````` +
+                  .`.```.....`':.````````````..................```````......`.,;;.``,;;`
+                                                        + `...``````````........`
+                                                   @@@+#;..``````````````````` ``,
+                                      ` :.,:,.+. @@+`  '#.```````````````````  ``
+                                    .,'''' ``..`@@@@@'+++'```````````````` ; ``
+                      `,:,,::,,;,.'''#++'`......@@@@@@'++;',````````````;.````;
+                `::::.......`''+++''''''++`.``...;@@@@@@+  `` `.``` ,:`..``` .
+           `::,::,......````.+++''+''+++'''+#'##+``:@@@@@@@@@+;:;,.....`````
+        `,:::,,.........``.```#''+++''++''+++''+++``` ,,:      ;`....```` '
+    .,,,::,,:::,,::..,:...`..,;,````.+''++++'''+'''',`'      ```....````;
+                `` ``.;:,.....`````````..,.,                   ``..``` `
+                     ```.,:::,,,,,,,,,::`                       ;;.```'
+                                                                  ,```
 
-*/
+
+ */
 package com.erola.btsearch.util.redis;
 
 import java.io.FileInputStream;
@@ -28,10 +39,10 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Redis 配置类
+ * 使用静态方法调用的Redis 配置类
  * Created by Erola on 2017/9/10.
  */
-public class RedisConfig {
+public class JedisStaticConfig {
     /**
      * 写连接池数量
      */
@@ -52,13 +63,13 @@ public class RedisConfig {
     /**
      * Redis 配置实例
      */
-    private static RedisConfig redisConfigInstance;
+    private static JedisStaticConfig redisConfigInstance;
 
     /**
      * 获取Redis 配置实例
      * @return
      */
-    private static RedisConfig getRedisConfigInstance(){
+    private static JedisStaticConfig getRedisConfigInstance(){
         if(redisConfigInstance!=null)
             return redisConfigInstance;
         else
@@ -145,7 +156,7 @@ public class RedisConfig {
      */
     private static void setPropertiesConfig(Properties propertiesConfig){
         if(redisConfigInstance==null) {
-            redisConfigInstance = new RedisConfig();
+            redisConfigInstance = new JedisStaticConfig();
         }
         redisConfigInstance.writePoolSize = Integer.valueOf(propertiesConfig.get("WritePoolSize").toString().trim());
         redisConfigInstance.writeServer =propertiesConfig.get("WriteServer").toString().trim();

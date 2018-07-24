@@ -3,6 +3,7 @@ package com.erola.btsearch.util.redis;
 import com.erola.btsearch.util.json.JsonHelper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import java.io.IOException;
@@ -32,6 +33,9 @@ public class RedisHelper {
          * @return
          */
         private static JedisPool initRedisWritePool() {
+            JedisCluster aaa=null;
+
+
             JedisPool ret = null;
             JedisPoolConfig config = new JedisPoolConfig();
             config.setMaxTotal(RedisConfig.getWritePoolSize());

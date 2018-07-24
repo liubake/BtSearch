@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+    <description>Jedis Configuration</description>
+
+    <!-- 加载配置属性文件 -->
+    <!--<context:property-placeholder ignore-unresolvable="true" location="redisconfig.properties" />-->
+
+    <!-- Jedis连接池配置-->
+    <bean id="jedisPoolConfig" name="JedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+
+        <!-- 最大空闲连接数 -->
+        <property name="maxIdle" value="10" />
+        <!-- 最大连接数 -->
+        <property name="maxTotal" value="30" />
+        <!-- 获取连接时的最大等待毫秒数, 默认-1 -->
+        <property name="maxWaitMillis" value="1500" />
+        <!-- 在获取连接的时候检查有效性, 默认false -->
+        <property name="testOnBorrow" value="true" />
+        <!-- 在空闲时检查有效性, 默认false -->
+        <property name="testWhileIdle" value="true" />
+        <!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true -->
+        <property name="blockWhenExhausted" value="false" />
+        <!-- 每次释放连接的最大数目 -->
+        <property name="numTestsPerEvictionRun" value="1024" />
+        <!-- 连接空闲的最小时间，达到此值后空闲连接将可能会被移除，负值(-1)表示不移除 -->
+        <property name="minEvictableIdleTimeMillis" value="1800000" />
+        <!-- “空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1 -->
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
+        <!-- 连接空闲的最小时间，达到此值后空闲链接将会被移除，且保留“minIdle”个空闲连接数。默认为-1 -->
+        <property name="softMinEvictableIdleTimeMillis" value="10000" />
+    </bean>
+
+    <bean id="jedisClientFactory" name="JedisClientFactory" class="com.erola.btsearch.util.redis.JedisClientFactory">
+        <!-- redis 类型 Cluster：集群，其它：单机 -->
+        <property name="clientType" value="Cluster" />
+        <!-- 访问密码 -->
+        <property name="passWord" value="" />
+        <!-- 连接超时，不配置默认2000毫秒 -->
+        <property name="timeout" value="2000" />
+        <!-- 响应超时，不配置默认2000毫秒 -->
+        <property name="soTimeout" value="2000" />
+        <!-- redis 节点配置，单机类型只取第一个节点 -->
+        <property name="redisNodes">
+            <set>
+                <value>127.0.0.1:7000</value>
+            </set>
+        </property>
+        <property name="jedisPoolConfig" ref="jedisPoolConfig" />
+    </bean>
+
+    <bean id="jedisClientTemplate" name="JedisClientTemplate" class="com.erola.btsearch.util.redis.JedisClientTemplate">
+        <property name="jedisClient" ref="jedisClientFactory" />
+    </bean>
+
+</beans>

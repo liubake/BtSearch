@@ -4,6 +4,7 @@ import com.erola.btsearch.spider.config.SpiderConfig;
 import com.erola.btsearch.spider.dht.server.DHTServer;
 import com.erola.btsearch.util.log4j.Log4jConfig;
 import com.erola.btsearch.util.mongodb.MongoDBConfig;
+import com.erola.btsearch.util.redis.JedisClientTemplate;
 import com.erola.btsearch.util.redis.RedisConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -59,6 +60,10 @@ public class Spider {
         String contextConfig = rootDirectory + File.separator + "appcontext.xml";
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextConfig);
         ITorrentInfoService torrentInfoService = applicationContext.getBean("TorrentInfoService", ITorrentInfoService.class);
+
+        //使用 @resource @autowired 自动注入需要该对象是由 spring 管理的
+        //JedisClientTemplate jedisClientTemplate = applicationContext.getBean("JedisClientTemplate", JedisClientTemplate.class);
+
         Thread dhtThread = new Thread(new DHTServer((TorrentInfo torrentInfo)->torrentInfoService.saveOrUpdate(torrentInfo)));
         dhtThread.run();
     }

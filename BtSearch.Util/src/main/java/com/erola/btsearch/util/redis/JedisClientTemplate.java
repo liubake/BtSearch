@@ -34,7 +34,7 @@ package com.erola.btsearch.util.redis;
 
 /**
  * 使用spring管理的jedis 客户端方法模板
- * 支持根据配置注入单机或者集群
+ * 支持根据配置注入redis单机或者集群
  * Created by Erola on 2018/7/24.
  */
 public class JedisClientTemplate implements IJedisClient {

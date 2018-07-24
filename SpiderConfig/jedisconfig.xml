@@ -30,7 +30,7 @@
         <property name="numTestsPerEvictionRun" value="1024" />
         <!-- 连接空闲的最小时间，达到此值后空闲连接将可能会被移除，负值(-1)表示不移除 -->
         <property name="minEvictableIdleTimeMillis" value="1800000" />
-        <!-- “空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1 -->
+        <!-- 空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1 -->
         <property name="timeBetweenEvictionRunsMillis" value="30000" />
         <!-- 连接空闲的最小时间，达到此值后空闲链接将会被移除，且保留“minIdle”个空闲连接数。默认为-1 -->
         <property name="softMinEvictableIdleTimeMillis" value="10000" />
@@ -47,8 +47,9 @@
         <property name="soTimeout" value="2000" />
         <!-- redis 节点配置，单机类型只取第一个节点 -->
         <property name="redisNodes">
-            <set>
+            <set value-type="java.util.LinkedHashSet">
                 <value>127.0.0.1:7000</value>
+                <value>0.0.0.1:7000</value>
             </set>
         </property>
         <property name="jedisPoolConfig" ref="jedisPoolConfig" />

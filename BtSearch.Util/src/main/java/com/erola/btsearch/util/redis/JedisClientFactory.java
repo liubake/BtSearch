@@ -99,30 +99,29 @@ public class JedisClientFactory implements FactoryBean<IJedisClient>, Initializi
         int timeoutValue = 2000;
         int soTimeoutValue = 2000;
         String passWordValue = null;
-        List<String> redisNodeList = new ArrayList<>(redisNodes);
-        if(timeout!=null && !timeout.isEmpty()){
-            timeoutValue = Integer.parseInt(timeout);
+        if(timeout!=null && !timeout.trim().isEmpty()){
+            timeoutValue = Integer.parseInt(timeout.trim());
         }
-        if(soTimeout!=null && !soTimeout.isEmpty()){
-            soTimeoutValue = Integer.parseInt(soTimeout);
+        if(soTimeout!=null && !soTimeout.trim().isEmpty()){
+            soTimeoutValue = Integer.parseInt(soTimeout.trim());
         }
-        if(passWord!=null && !passWord.isEmpty()){
-            passWordValue = passWord;
+        if(passWord!=null && !passWord.trim().isEmpty()){
+            passWordValue = passWord.trim();
         }
-        if(clientType==null || clientType.isEmpty() || !clientType.equalsIgnoreCase("Cluster")){
-            String[] firstNodeArray = redisNodeList.get(0).split(":");
+        if(clientType==null || clientType.trim().isEmpty() || !clientType.trim().equalsIgnoreCase("Cluster")){
+            String[] firstNodeArray = redisNodes.iterator().next().trim().split(":");
             if(firstNodeArray.length != 2){
-                throw new ParseException("node address error!", 0);
+                throw new ParseException("node address error", 0);
             }
             JedisPool jedisPool = new JedisPool(jedisPoolConfig, firstNodeArray[0], Integer.parseInt(firstNodeArray[1]), timeoutValue, soTimeoutValue, passWordValue, 0, null, false, null, null, null);
             jedisClient = new JedisSingleClient(jedisPool);
         }else{
             int index = 0;
             Set<HostAndPort> hostPortSet = new HashSet<>();
-            for(String node:redisNodeList){
-                String[] nodeArray = node.split(":");
+            for(String node:redisNodes){
+                String[] nodeArray = node.trim().split(":");
                 if(nodeArray.length != 2){
-                    throw new ParseException("node address error!", index);
+                    throw new ParseException("node address error", index);
                 }
                 hostPortSet.add(new HostAndPort(nodeArray[0],Integer.valueOf(nodeArray[1])));
                 index++;

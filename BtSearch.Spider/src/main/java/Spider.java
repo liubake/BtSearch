@@ -2,10 +2,10 @@ import com.erola.btsearch.model.TorrentInfo;
 import com.erola.btsearch.service.interfaces.ITorrentInfoService;
 import com.erola.btsearch.spider.config.SpiderConfig;
 import com.erola.btsearch.spider.dht.server.DHTServer;
+import com.erola.btsearch.util.jedis.JedisClientTemplate;
+import com.erola.btsearch.util.jedis.JedisStaticConfig;
 import com.erola.btsearch.util.log4j.Log4jConfig;
 import com.erola.btsearch.util.mongodb.MongoDBConfig;
-import com.erola.btsearch.util.redis.JedisClientTemplate;
-import com.erola.btsearch.util.redis.RedisConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import java.io.File;
@@ -32,10 +32,10 @@ public class Spider {
         Log4jConfig.initializeLog4jConfig(log4jConfig);
 
         /**
-         * 初始化 Redis 配置
+         * 初始化 Jedis 配置
          */
-        String redisConfig = rootDirectory + File.separator + "redisconfig.properties";
-        RedisConfig.initializeRedisConfig(redisConfig);
+        String jedisConfig = rootDirectory + File.separator + "jedisconfig.properties";
+        JedisStaticConfig.initializeRedisConfig(jedisConfig);
 
         /**
          * 初始化 Mongo 配置
@@ -60,10 +60,8 @@ public class Spider {
         String contextConfig = rootDirectory + File.separator + "appcontext.xml";
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextConfig);
         ITorrentInfoService torrentInfoService = applicationContext.getBean("TorrentInfoService", ITorrentInfoService.class);
-
         //使用 @resource @autowired 自动注入需要该对象是由 spring 管理的
-        //JedisClientTemplate jedisClientTemplate = applicationContext.getBean("JedisClientTemplate", JedisClientTemplate.class);
-
+        JedisClientTemplate jedisClientTemplate = applicationContext.getBean("JedisClientTemplate", JedisClientTemplate.class);
         Thread dhtThread = new Thread(new DHTServer((TorrentInfo torrentInfo)->torrentInfoService.saveOrUpdate(torrentInfo)));
         dhtThread.run();
     }

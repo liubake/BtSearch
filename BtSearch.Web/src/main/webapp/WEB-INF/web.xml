@@ -38,4 +38,16 @@
     <servlet-name>btsearch.web</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+  <listener>
+    <listener-class>com.erola.btsearch.web.listener.LifeCycleListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>/WEB-INF/log4jconfig.properties</param-value>
+  </context-param>
+  <context-param>
+    <param-name>nettyClientConfigLocation</param-name>
+    <param-value>/WEB-INF/nettyclientconfig.properties</param-value>
+  </context-param>
 </web-app>

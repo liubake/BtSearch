@@ -1,4 +1,37 @@
-package com.erola.btsearch.util.redis;
+/**
+                                                                                    +
+                Atom                                                                @@
+                                                                                  `@@@@@
+                                                                       +@'  .:+@@@;@@@@@@
+                                                                    @@@@@@@@@@+:      `#@@:
+                                                               ,'@@@@@@@@@,`.`;``.; ```` @@@@
+                                                           @#@@@@@@@@@@@``.`````;:@+,`````': ``
+                                                             :@@@@@@@@ ``````` :,@@@ ;`` ````` ,
+                                                                @@@@@@@ .````. .@@@..`. `````: `
+                                                               ;````` `.`````.    '``````` ,,@.`
+                                                              .`..`, `..`````````````````.@@@;`;
+                        ,;:,..,:.::::::;::,`                   , .......``````````````.`:,@@,`:
+                @`````````````````````````````````` ``     `.,;,,;..:,..```````,````,``'.::`'
+                  :,;@ ````````````````````````````````````````````....`.`````````````````.+
+                   `:;,`````````````````````````````````````````````....`,:`````````````` +
+                  .`.```.....`':.````````````..................```````......`.,;;.``,;;`
+                                                        + `...``````````........`
+                                                   @@@+#;..``````````````````` ``,
+                                      ` :.,:,.+. @@+`  '#.```````````````````  ``
+                                    .,'''' ``..`@@@@@'+++'```````````````` ; ``
+                      `,:,,::,,;,.'''#++'`......@@@@@@'++;',````````````;.````;
+                `::::.......`''+++''''''++`.``...;@@@@@@+  `` `.``` ,:`..``` .
+           `::,::,......````.+++''+''+++'''+#'##+``:@@@@@@@@@+;:;,.....`````
+        `,:::,,.........``.```#''+++''++''+++''+++``` ,,:      ;`....```` '
+    .,,,::,,:::,,::..,:...`..,;,````.+''++++'''+'''',`'      ```....````;
+                `` ``.;:,.....`````````..,.,                   ``..``` `
+                     ```.,:::,,,,,,,,,::`                       ;;.```'
+                                                                  ,```
+
+
+
+ */
+package com.erola.btsearch.util.jedis;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -7,23 +40,23 @@ import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
+ * jedis客户端工厂
+ * 根据配置返回对应的客户端
  * Created by Erola on 2018/7/24.
  */
 public class JedisClientFactory implements FactoryBean<IJedisClient>, InitializingBean {
 
     /**
-     * redis 类型 Cluster：集群，其它：单机
+     * jedis 类型 Cluster：集群，其它：单机
      */
     private String clientType;
 
     /**
-     * redis 访问密码
+     * jedis 访问密码
      */
     private String passWord;
 
@@ -38,7 +71,7 @@ public class JedisClientFactory implements FactoryBean<IJedisClient>, Initializi
     private String soTimeout;
 
     /**
-     * redis 节点配置，单机类型只取第一个节点
+     * jedis 节点配置，单机类型只取第一个节点
      */
     private Set<String> redisNodes;
 

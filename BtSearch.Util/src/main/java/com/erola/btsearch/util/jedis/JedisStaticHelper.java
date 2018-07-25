@@ -31,12 +31,15 @@
 
 
  */
-package com.erola.btsearch.util.redis;
+package com.erola.btsearch.util.jedis;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import redis.clients.jedis.*;
+import java.io.IOException;
 
 /**
- * Jedis 静态操作辅助类
+ * Jedis 静态操作辅助类，可以脱离spring使用
+ * 需要在程序入口处初始化对应的配置
  * 支持根据配置连接redis单机或者集群
  * Created by Erola on 2017/9/10.
  */
@@ -99,6 +102,33 @@ public class JedisStaticHelper {
     }
 
     /**
+     * 判断指定的key是否存在
+     * @param key
+     * @return
+     */
+    public static Boolean exists(String key) {
+        return JedisClientHelper.instance.exists(key);
+    }
+
+    /**
+     * 删除指定的key
+     * @param key
+     * @return
+     */
+    public static Long del(String key) {
+        return JedisClientHelper.instance.del(key);
+    }
+
+    /**
+     * 删除多个指定的key
+     * @param keys
+     * @return
+     */
+    public static Long del(String... keys) {
+        return JedisClientHelper.instance.del(keys);
+    }
+
+    /**
      * 从Redis中查询数据
      * @param key
      * @return
@@ -125,6 +155,40 @@ public class JedisStaticHelper {
      * @return
      */
     public static String setex(String key, String value, int expireSeconds) {
+        return JedisClientHelper.instance.setex(key, value, expireSeconds);
+    }
+
+    /**
+     * 查询指定的key，并用json反序列化为指定的对象
+     * @param key
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T get(String key, Class<T> clazz) throws IOException {
+        return JedisClientHelper.instance.get(key, clazz);
+    }
+
+    /**
+     * 设置key对应的，对象json序列化为字符串之后的值
+     * @param key
+     * @param value
+     * @param <T>
+     * @return
+     */
+    public static <T> String set(String key, T value) throws JsonProcessingException {
+        return JedisClientHelper.instance.set(key, value);
+    }
+
+    /**
+     * 设置key对应的，对象json序列化为字符串之后的值并设置过期时间
+     * @param key
+     * @param value
+     * @param expireSeconds
+     * @param <T>
+     * @return
+     */
+    public static <T> String setex(String key, T value, int expireSeconds) throws JsonProcessingException {
         return JedisClientHelper.instance.setex(key, value, expireSeconds);
     }
 }

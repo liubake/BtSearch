@@ -30,7 +30,7 @@
 
 
  */
-package com.erola.btsearch.util.redis;
+package com.erola.btsearch.util.jedis;
 
 import redis.clients.jedis.HostAndPort;
 import java.io.FileInputStream;
@@ -48,7 +48,7 @@ import java.util.Set;
  */
 public class JedisStaticConfig {
     /**
-     * redis 类型 Cluster：集群，其它：单机
+     * jedis 类型 Cluster：集群，其它：单机
      */
     private String clientType;
 
@@ -68,7 +68,7 @@ public class JedisStaticConfig {
     private int soTimeout = 2000;
 
     /**
-     * redis 节点配置，单机类型只取第一个节点
+     * jedis 节点配置，单机类型只取第一个节点
      */
     private Set<HostAndPort> hostPortSet;
 

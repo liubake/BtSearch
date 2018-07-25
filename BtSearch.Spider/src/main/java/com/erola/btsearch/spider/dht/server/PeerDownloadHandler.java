@@ -3,8 +3,8 @@ package com.erola.btsearch.spider.dht.server;
 import com.erola.btsearch.spider.dht.listener.OnTorrentDownloadListener;
 import com.erola.btsearch.spider.dht.model.DownloadPeer;
 import com.erola.btsearch.spider.dht.util.ByteUtil;
+import com.erola.btsearch.util.jedis.JedisStaticHelper;
 import com.erola.btsearch.util.log4j.Log4jHelper;
-import com.erola.btsearch.util.redis.RedisHelper;
 import java.net.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -74,15 +74,15 @@ public class PeerDownloadHandler implements Runnable {
             try {
                 DownloadPeer peerItem = this.downloadPeerQueue.take();
                 String peerInfoHashString = ByteUtil.byteArrayToHex(peerItem.getInfo_hash());
-                if(!RedisHelper.exists(peerInfoHashString)) {
-                    RedisHelper.setex(peerInfoHashString, "Exist", 259200);
+                if(!JedisStaticHelper.exists(peerInfoHashString)) {
+                    JedisStaticHelper.setex(peerInfoHashString, "Exist", 259200);
                     this.downloadThreadPool.execute(()->{
                         try {
                             PeerWireProtocalHandler peerWireProtocalHandler = new PeerWireProtocalHandler(nodeId, new InetSocketAddress(peerItem.getIp(), peerItem.getPort()), peerItem.getInfo_hash(), nodeConnectTimeOut, nodeReadWriteTimeOut, onTorrentDownloadListener);
                             peerWireProtocalHandler.downloadTorrent();
                         } catch (Exception e) {
                             //出现异常时删除记录，说不定从其它节点可以下载成功呢~
-                            RedisHelper.del(peerInfoHashString);
+                            JedisStaticHelper.del(peerInfoHashString);
                             if (e instanceof ConnectException) {
                                 //忽略网络异常
                             } else if (e instanceof SocketException) {

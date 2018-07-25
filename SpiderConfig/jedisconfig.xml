@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:utilss="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
 	   http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util.xsd"
        default-lazy-init="true">
 
     <description>Jedis Configuration</description>
@@ -36,8 +39,14 @@
         <property name="softMinEvictableIdleTimeMillis" value="10000" />
     </bean>
 
-    <bean id="jedisClientFactory" name="JedisClientFactory" class="com.erola.btsearch.util.redis.JedisClientFactory">
-        <!-- redis 类型 Cluster：集群，其它：单机 -->
+    <!-- 这样配置才支持设置set对象类型[用LinkedHashSet保证在非集群的时候取的第一条记录是列表中声明的第一条记录]-->
+    <utilss:set id="redisNodesConfig" set-class="java.util.LinkedHashSet">
+        <value>127.0.0.1:7000</value>
+        <value>0.0.0.1:7000</value>
+    </utilss:set>
+    <!-- Jedis客户端配置-->
+    <bean id="jedisClientFactory" name="JedisClientFactory" class="com.erola.btsearch.util.jedis.JedisClientFactory">
+        <!-- jedis 类型 Cluster：集群，其它：单机 -->
         <property name="clientType" value="Cluster" />
         <!-- 访问密码 -->
         <property name="passWord" value="" />
@@ -45,17 +54,13 @@
         <property name="timeout" value="2000" />
         <!-- 响应超时，不配置默认2000毫秒 -->
         <property name="soTimeout" value="2000" />
-        <!-- redis 节点配置，单机类型只取第一个节点 -->
-        <property name="redisNodes">
-            <set value-type="java.util.LinkedHashSet">
-                <value>127.0.0.1:7000</value>
-                <value>0.0.0.1:7000</value>
-            </set>
-        </property>
+        <!-- jedis 节点配置，单机类型只取第一个节点 -->
+        <property name="redisNodes" ref="redisNodesConfig" />
         <property name="jedisPoolConfig" ref="jedisPoolConfig" />
     </bean>
 
-    <bean id="jedisClientTemplate" name="JedisClientTemplate" class="com.erola.btsearch.util.redis.JedisClientTemplate">
+    <!-- Jedis客户端模板配置-->
+    <bean id="jedisClientTemplate" name="JedisClientTemplate" class="com.erola.btsearch.util.jedis.JedisClientTemplate">
         <property name="jedisClient" ref="jedisClientFactory" />
     </bean>
 

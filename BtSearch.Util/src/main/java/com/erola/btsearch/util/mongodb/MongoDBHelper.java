@@ -1,3 +1,35 @@
+/**
+                                                                                    +
+                lbk                                                                @@
+                                                                                  `@@@@@
+                                                                       +@'  .:+@@@;@@@@@@
+                                                                    @@@@@@@@@@+:      `#@@:
+                                                               ,'@@@@@@@@@,`.`;``.; ```` @@@@
+                                                           @#@@@@@@@@@@@``.`````;:@+,`````': ``
+                                                             :@@@@@@@@ ``````` :,@@@ ;`` ````` ,
+                                                                @@@@@@@ .````. .@@@..`. `````: `
+                                                               ;````` `.`````.    '``````` ,,@.`
+                                                              .`..`, `..`````````````````.@@@;`;
+                        ,;:,..,:.::::::;::,`                   , .......``````````````.`:,@@,`:
+                @`````````````````````````````````` ``     `.,;,,;..:,..```````,````,``'.::`'
+                  :,;@ ````````````````````````````````````````````....`.`````````````````.+
+                   `:;,`````````````````````````````````````````````....`,:`````````````` +
+                  .`.```.....`':.````````````..................```````......`.,;;.``,;;`
+                                                        + `...``````````........`
+                                                   @@@+#;..``````````````````` ``,
+                                      ` :.,:,.+. @@+`  '#.```````````````````  ``
+                                    .,'''' ``..`@@@@@'+++'```````````````` ; ``
+                      `,:,,::,,;,.'''#++'`......@@@@@@'++;',````````````;.````;
+                `::::.......`''+++''''''++`.``...;@@@@@@+  `` `.``` ,:`..``` .
+           `::,::,......````.+++''+''+++'''+#'##+``:@@@@@@@@@+;:;,.....`````
+        `,:::,,.........``.```#''+++''++''+++''+++``` ,,:      ;`....```` '
+    .,,,::,,:::,,::..,:...`..,;,````.+''++++'''+'''',`'      ```....````;
+                `` ``.;:,.....`````````..,.,                   ``..``` `
+                     ```.,:::,,,,,,,,,::`                       ;;.```'
+                                                                  ,```
+
+
+ */
 package com.erola.btsearch.util.mongodb;
 
 import com.mongodb.MongoClient;
@@ -27,11 +59,11 @@ public class MongoDBHelper {
          * @return
          */
         private static MongoTemplate initMongoTemplate(){
-            MongoClient mongoClient=new MongoClient(new ServerAddress(MongoDBConfig.getServerAddress(), MongoDBConfig.getPort()),
+            MongoClient mongoClient=new MongoClient(new ServerAddress(MongoDBConfig.getAddress(), MongoDBConfig.getPort()),
                     MongoClientOptions.builder().connectionsPerHost(MongoDBConfig.getPoolSize()).threadsAllowedToBlockForConnectionMultiplier(MongoDBConfig.getBlockSize())
                             .connectTimeout(MongoDBConfig.getConnectTimeout()).maxConnectionIdleTime(MongoDBConfig.getConnectIdletime())
                             .maxWaitTime(MongoDBConfig.getBlockWaittime()).build());
-            return new MongoTemplate(mongoClient, MongoDBConfig.getDbName());
+            return new MongoTemplate(mongoClient, MongoDBConfig.getDatabaseName());
         }
     }
 

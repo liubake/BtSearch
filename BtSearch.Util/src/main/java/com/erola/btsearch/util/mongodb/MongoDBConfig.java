@@ -1,3 +1,35 @@
+/**
+                                                                                    +
+                lbk                                                                @@
+                                                                                  `@@@@@
+                                                                       +@'  .:+@@@;@@@@@@
+                                                                    @@@@@@@@@@+:      `#@@:
+                                                               ,'@@@@@@@@@,`.`;``.; ```` @@@@
+                                                           @#@@@@@@@@@@@``.`````;:@+,`````': ``
+                                                             :@@@@@@@@ ``````` :,@@@ ;`` ````` ,
+                                                                @@@@@@@ .````. .@@@..`. `````: `
+                                                               ;````` `.`````.    '``````` ,,@.`
+                                                              .`..`, `..`````````````````.@@@;`;
+                        ,;:,..,:.::::::;::,`                   , .......``````````````.`:,@@,`:
+                @`````````````````````````````````` ``     `.,;,,;..:,..```````,````,``'.::`'
+                  :,;@ ````````````````````````````````````````````....`.`````````````````.+
+                   `:;,`````````````````````````````````````````````....`,:`````````````` +
+                  .`.```.....`':.````````````..................```````......`.,;;.``,;;`
+                                                        + `...``````````........`
+                                                   @@@+#;..``````````````````` ``,
+                                      ` :.,:,.+. @@+`  '#.```````````````````  ``
+                                    .,'''' ``..`@@@@@'+++'```````````````` ; ``
+                      `,:,,::,,;,.'''#++'`......@@@@@@'++;',````````````;.````;
+                `::::.......`''+++''''''++`.``...;@@@@@@+  `` `.``` ,:`..``` .
+           `::,::,......````.+++''+''+++'''+#'##+``:@@@@@@@@@+;:;,.....`````
+        `,:::,,.........``.```#''+++''++''+++''+++``` ,,:      ;`....```` '
+    .,,,::,,:::,,::..,:...`..,;,````.+''++++'''+'''',`'      ```....````;
+                `` ``.;:,.....`````````..,.,                   ``..``` `
+                     ```.,:::,,,,,,,,,::`                       ;;.```'
+                                                                  ,```
+
+
+ */
 package com.erola.btsearch.util.mongodb;
 
 import java.io.FileInputStream;
@@ -14,35 +46,35 @@ public class MongoDBConfig {
     /**
      * 端口号
      */
-    private int port = 0;
-    /**
-     * 连接数量
-     */
-    private int poolSize=0;
-    /**
-     *等待队列长度
-     */
-    private int blockSize=0;
-    /**
-     * 队列等待时间
-     */
-    private int blockWaittime=0;
-    /**
-     * 连接超时时间
-     */
-    private int connectTimeout=0;
-    /**
-     * 连接空闲时间
-     */
-    private int connectIdletime=0;
-    /**
-     *数据库名称
-     */
-    private String dbName="";
+    private int port = 27017;
     /**
      *服务器地址
      */
-    private String serverAddress = "";
+    private String address = "127.0.0.1";
+    /**
+     *数据库名称
+     */
+    private String databaseName="";
+    /**
+     * 连接数量
+     */
+    private int poolSize=10;
+    /**
+     *等待队列长度
+     */
+    private int blockSize=10;
+    /**
+     * 队列等待时间
+     */
+    private int blockWaittime=2000;
+    /**
+     * 连接超时时间
+     */
+    private int connectTimeout=2000;
+    /**
+     * 连接空闲时间
+     */
+    private int connectIdletime=2000;
 
     /**
      * MongoDB 配置实例
@@ -66,6 +98,22 @@ public class MongoDBConfig {
      */
     public static int getPort(){
         return getMongoDBConfigInstance().port;
+    }
+
+    /**
+     * 获取服务器地址
+     * @return
+     */
+    public static String getAddress(){
+        return getMongoDBConfigInstance().address;
+    }
+
+    /**
+     * 获取数据库名称
+     * @return
+     */
+    public static String getDatabaseName(){
+        return getMongoDBConfigInstance().databaseName;
     }
 
     /**
@@ -109,29 +157,13 @@ public class MongoDBConfig {
     }
 
     /**
-     * 获取数据库名称
-     * @return
-     */
-    public static String getDbName(){
-        return getMongoDBConfigInstance().dbName;
-    }
-
-    /**
-     * 获取服务器地址
-     * @return
-     */
-    public static String getServerAddress(){
-        return getMongoDBConfigInstance().serverAddress;
-    }
-
-    /**
      * 初始化MongoDB 配置实例
      * @param propertiesFilePath
      */
-    public static void initializeRedisConfig(String propertiesFilePath) {
+    public static void initializeConfig(String propertiesFilePath) {
         try {
             FileInputStream propertiesStream = new FileInputStream(propertiesFilePath);
-            initializeRedisConfig(propertiesStream);
+            initializeConfig(propertiesStream);
         } catch (FileNotFoundException e) {
             //这种配置初始化错误直接抛出去
             throw new RuntimeException(e);
@@ -142,7 +174,7 @@ public class MongoDBConfig {
      * 初始化MongoDB 配置实例
      * @param propertiesStream
      */
-    public static void initializeRedisConfig(InputStream propertiesStream){
+    public static void initializeConfig(InputStream propertiesStream){
         try{
             Properties propertiesConfig =new Properties();
             propertiesConfig.load(propertiesStream);
@@ -154,7 +186,6 @@ public class MongoDBConfig {
             if(propertiesStream!=null) {
                 try {
                     propertiesStream.close();
-                    propertiesStream = null;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -170,13 +201,39 @@ public class MongoDBConfig {
         if(mongoDBConfigInstance==null) {
             mongoDBConfigInstance = new MongoDBConfig();
         }
-        mongoDBConfigInstance.port = Integer.valueOf(propertiesConfig.get("Port").toString().trim());
-        mongoDBConfigInstance.poolSize = Integer.valueOf(propertiesConfig.get("PoolSize").toString().trim());
-        mongoDBConfigInstance.blockSize = Integer.valueOf(propertiesConfig.get("BlockSize").toString().trim());
-        mongoDBConfigInstance.blockWaittime = Integer.valueOf(propertiesConfig.get("BlockWaittime").toString().trim());
-        mongoDBConfigInstance.connectTimeout = Integer.valueOf(propertiesConfig.get("ConnectTimeout").toString().trim());
-        mongoDBConfigInstance.connectIdletime = Integer.valueOf(propertiesConfig.get("ConnectIdletime").toString().trim());
-        mongoDBConfigInstance.dbName =propertiesConfig.get("DbName").toString().trim();
-        mongoDBConfigInstance.serverAddress =propertiesConfig.get("ServerAddress").toString().trim();
+
+        String databaseNameValue = propertiesConfig.getProperty("mongo.db.databaseName");
+        if(databaseNameValue==null || databaseNameValue.trim().isEmpty()){
+            throw new IllegalArgumentException("databaseName 配置不能为空");
+        }
+        mongoDBConfigInstance.databaseName = databaseNameValue.trim();
+        String portValue = propertiesConfig.getProperty("mongo.db.port");
+        if(portValue!=null && !portValue.trim().isEmpty()){
+            mongoDBConfigInstance.port = Integer.parseInt(portValue.trim());
+        }
+        String addressValue = propertiesConfig.getProperty("mongo.db.address");
+        if(addressValue!=null && !addressValue.trim().isEmpty()){
+            mongoDBConfigInstance.address = addressValue.trim();
+        }
+        String poolSizeValue = propertiesConfig.getProperty("mongo.client.poolSize");
+        if(poolSizeValue!=null && !poolSizeValue.trim().isEmpty()){
+            mongoDBConfigInstance.poolSize = Integer.parseInt(poolSizeValue.trim());
+        }
+        String blockSizeValue = propertiesConfig.getProperty("mongo.client.blockSize");
+        if(blockSizeValue!=null && !blockSizeValue.trim().isEmpty()){
+            mongoDBConfigInstance.blockSize = Integer.parseInt(blockSizeValue.trim());
+        }
+        String blockWaittimeValue = propertiesConfig.getProperty("mongo.client.blockWaittime");
+        if(blockWaittimeValue!=null && !blockWaittimeValue.trim().isEmpty()){
+            mongoDBConfigInstance.blockWaittime = Integer.parseInt(blockWaittimeValue.trim());
+        }
+        String connectTimeoutValue = propertiesConfig.getProperty("mongo.client.connectTimeout");
+        if(connectTimeoutValue!=null && !connectTimeoutValue.trim().isEmpty()){
+            mongoDBConfigInstance.connectTimeout = Integer.parseInt(connectTimeoutValue.trim());
+        }
+        String connectIdletimeValue = propertiesConfig.getProperty("mongo.client.connectIdletime");
+        if(connectIdletimeValue!=null && !connectIdletimeValue.trim().isEmpty()){
+            mongoDBConfigInstance.connectIdletime = Integer.parseInt(connectIdletimeValue.trim());
+        }
     }
 }

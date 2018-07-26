@@ -47,7 +47,11 @@
     <param-value>/WEB-INF/log4jconfig.properties</param-value>
   </context-param>
   <context-param>
-    <param-name>nettyClientConfigLocation</param-name>
-    <param-value>/WEB-INF/nettyclientconfig.properties</param-value>
+    <param-name>jedisConfigLocation</param-name>
+    <param-value>/WEB-INF/jedisconfig.properties</param-value>
+  </context-param>
+  <context-param>
+    <param-name>mongoConfigLocation</param-name>
+    <param-value>/WEB-INF/mongoconfig.properties</param-value>
   </context-param>
 </web-app>

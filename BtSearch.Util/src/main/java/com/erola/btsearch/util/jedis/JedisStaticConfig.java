@@ -1,6 +1,6 @@
 /**
                                                                                     +
-                Atom                                                                @@
+                lbk                                                                @@
                                                                                   `@@@@@
                                                                        +@'  .:+@@@;@@@@@@
                                                                     @@@@@@@@@@+:      `#@@:
@@ -203,10 +203,10 @@ public class JedisStaticConfig {
      * 初始化Redis 配置实例
      * @param propertiesFilePath
      */
-    public static void initializeRedisConfig(String propertiesFilePath) {
+    public static void initializeConfig(String propertiesFilePath) {
         try {
             FileInputStream propertiesStream = new FileInputStream(propertiesFilePath);
-            initializeRedisConfig(propertiesStream);
+            initializeConfig(propertiesStream);
         } catch (FileNotFoundException e) {
             //这种配置初始化错误直接抛出去
             throw new RuntimeException(e);
@@ -217,7 +217,7 @@ public class JedisStaticConfig {
      * 初始化Redis 配置实例
      * @param propertiesStream
      */
-    public static void initializeRedisConfig(InputStream propertiesStream){
+    public static void initializeConfig(InputStream propertiesStream){
         try{
             Properties propertiesConfig =new Properties();
             propertiesConfig.load(propertiesStream);

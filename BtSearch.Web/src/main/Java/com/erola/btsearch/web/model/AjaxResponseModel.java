@@ -40,4 +40,23 @@ public class AjaxResponseModel<T> {
     public void setData(T data){
         this.data=data;
     }
+
+    /**
+     * 返回响应错误对象的方法
+     * @param message
+     * @return
+     */
+    public static AjaxResponseModel<Object> getErrorResponse(String message){
+        return new AjaxResponseModel<Object>(0, message, null);
+    }
+
+    /**
+     * 返回响应成功对象的方法
+     * @param value
+     * @param <T>
+     * @return
+     */
+    public static <T> AjaxResponseModel<T> getSuccessResponse(T value){
+        return new AjaxResponseModel<T>(1, "", value);
+    }
 }

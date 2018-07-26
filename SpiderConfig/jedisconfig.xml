@@ -12,7 +12,7 @@
     <description>Jedis Configuration</description>
 
     <!-- 加载配置属性文件 -->
-    <!--<context:property-placeholder ignore-unresolvable="true" location="redisconfig.properties" />-->
+    <!--<context:property-placeholder ignore-unresolvable="true" location="jedisconfig.properties" />-->
 
     <!-- Jedis连接池配置-->
     <bean id="jedisPoolConfig" name="JedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

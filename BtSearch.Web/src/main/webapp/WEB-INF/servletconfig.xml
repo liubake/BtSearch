@@ -16,6 +16,7 @@
     <!-- 如果当前请求为“/”时，则转发到“/home/index” -->
     <mvc:view-controller path="/" view-name="forward:/home/index"/>
     <!-- 静态资源映射-->
+    <mvc:resources location="favicon.ico" mapping="favicon.ico"/>
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
     <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />

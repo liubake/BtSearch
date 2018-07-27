@@ -1,16 +1,16 @@
 package com.erola.btsearch.web.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Erola on 2017/9/30.
  */
 public class AjaxResponseModel<T> {
-    @JsonProperty(value = "Status")
+    //@JsonProperty(value = "Status")
     private Integer status;
-    @JsonProperty(value = "Message")
+    //@JsonProperty(value = "Message")
     private String message;
-    @JsonProperty(value = "Data")
+    //@JsonProperty(value = "Data")
     private T data;
 
     public AjaxResponseModel(){}
